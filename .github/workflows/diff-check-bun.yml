@@ -15,4 +15,4 @@ jobs:
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
       - name: diff check main
-        run: git diff HEAD main -- bun.lockb
+        run: git diff HEAD origin/main -- bun.lockb
