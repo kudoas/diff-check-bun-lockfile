@@ -14,5 +14,6 @@ jobs:
         run: |
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
+      - uses: oven-sh/setup-bun@v1
       - name: diff check main
         run: git diff HEAD origin/main -- bun.lockb
