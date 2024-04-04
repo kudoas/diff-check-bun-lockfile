@@ -1,0 +1,27 @@
+exec:
+  hello:
+    - when: true
+      template: |
+        exit code: {{.ExitCode}}
+
+        ```
+        $ {{.Command}}
+        ```
+
+        Stdout:
+
+        ```
+        {{.Stdout}}
+        ```
+
+        Stderr:
+
+        ```
+        {{.Stderr}}
+        ```
+
+        CombinedOutput:
+
+        ```
+        {{.CombinedOutput}}
+        ```
