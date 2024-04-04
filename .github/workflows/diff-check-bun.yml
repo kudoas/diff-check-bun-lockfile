@@ -12,6 +12,7 @@ jobs:
           fetch-depth: 0
       - name: Set up github
         run: |
+          touch .gitattributes && echo "bun.lockb diff=lockb" > .gitattributes
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
       - uses: oven-sh/setup-bun@v1
