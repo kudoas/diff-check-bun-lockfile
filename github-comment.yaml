@@ -1,12 +1,13 @@
 ---
 templates:
   bun_diff_exec: |
+    # {{ template "status" . }} diff in bun lockfile  {{ template "link" .}}
     {{ if eq .ExitCode 0 }}
     ```diff
     {{ .Stdout | AvoidHTMLEscape }}
     ```
     {{ else }}
-    No diff
+    No diff in bun lockfile
     {{ end }}
 hide:
   bun_diff: |
