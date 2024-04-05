@@ -1,6 +1,9 @@
-name: Diff check bun lockfile
+name: check diff in bun lockfile
 
-on: push
+on:
+  push:
+    paths:
+      - "bun.lockb"
 
 jobs:
   diff-check:
@@ -22,7 +25,7 @@ jobs:
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
       - uses: oven-sh/setup-bun@v1
-      - name: Diff check bun lockfile
+      - name: check diff in bun lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

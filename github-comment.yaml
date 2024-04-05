@@ -6,9 +6,7 @@ templates:
     ```diff
     {{ .Stdout | AvoidHTMLEscape }}
     ```
-    {{ else }}
-    No diff in bun lockfile
-    {{ end }}
+    {{ else }}{{template "hidden_combined_output" .}}{{ end }}
 hide:
   bun_diff: |
     Comment.HasMeta && (Comment.Meta.SHA1 != Commit.SHA1 && Comment.Meta.TemplateKey == "bun_diff")
