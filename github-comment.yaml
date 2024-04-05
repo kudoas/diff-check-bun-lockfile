@@ -3,7 +3,7 @@ templates:
   bun_diff_exec: |
     {{ if eq .ExitCode 0 }}
     ```diff
-    {{ .Stdout }}
+    {{ .Stdout | AvoidHTMLEscape }}
     ```
     {{ else }}
     No diff
