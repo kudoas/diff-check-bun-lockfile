@@ -1,5 +1,4 @@
 ---
----
 templates:
   bun_diff_exec: |
     {{ if eq .ExitCode 0 }}
