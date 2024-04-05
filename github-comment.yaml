@@ -1,27 +1,17 @@
-exec:
-  hello:
-    - when: true
-      template: |
-        exit code: {{.ExitCode}}
+---
+templates:
+  bun_diff_exec: |
+    # {{ template "status" . }}: bun diff {{ template "link" .}}
 
-        ```
-        $ {{.Command}}
-        ```
-
-        Stdout:
-
-        ```
-        {{.Stdout}}
-        ```
-
-        Stderr:
-
-        ```
-        {{.Stderr}}
-        ```
-
-        CombinedOutput:
-
-        ```
-        {{.CombinedOutput}}
-        ```
+    {{ if eq .ExitCode 0 }}
+    ```diff
+    {{ .Stdout | AvoidHTMLEscape }}
+    ```
+    {{ else }}
+    差分はありません
+    {{ end }}
+  exec:
+    bun_diff:
+      - when: true
+        template: |
+          {{ template "bun_diff_exec" . }}
