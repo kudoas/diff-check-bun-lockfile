@@ -1,0 +1,18 @@
+---
+---
+templates:
+  bun_diff_exec: |
+    {{ if eq .ExitCode 0 }}
+    ```diff
+    {{ .Stdout }}
+    ```
+    {{ else }}
+    No diff
+    {{ end }}
+exec:
+  bun_diff:
+    - when: true
+      template: |
+        {{ template "bun_diff_exec" . }}
+      template_for_too_long: |
+        {{ template "bun_diff_exec" . }}
