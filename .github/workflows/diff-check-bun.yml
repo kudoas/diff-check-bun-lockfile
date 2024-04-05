@@ -26,5 +26,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          github-comment hide -k bun_diff
           github-comment exec -k bun_diff -- git diff HEAD origin/main -- bun.lockb
-          github-comment exec -- echo 'hello world'
