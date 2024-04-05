@@ -1,15 +1,9 @@
 ---
 templates:
   bun_diff_exec: |
-    # {{ template "status" . }}: bun diff {{ template "link" .}}
-
-    {{ if eq .ExitCode 0 }}
     ```diff
     {{ .Stdout | AvoidHTMLEscape }}
     ```
-    {{ else }}
-    差分はありません
-    {{ end }}
   exec:
     bun_diff:
       - when: true
