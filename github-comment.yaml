@@ -8,6 +8,10 @@ templates:
     {{ else }}
     No diff
     {{ end }}
+hide:
+  bun_diff: |
+    Comment.HasMeta && (Comment.Meta.SHA1 != Commit.SHA1 && Comment.Meta.TemplateKey == "bun_diff")
+post:
 exec:
   bun_diff:
     - when: true
