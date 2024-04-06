@@ -7,7 +7,7 @@ on:
 
 jobs:
   diff-check:
-    name: Diff check bun lockfile
+    name: diff check bun lockfile
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,13 +19,13 @@ jobs:
       - uses: aquaproj/aqua-installer@v3.0.0
         with:
           aqua_version: v2.25.2
-      - name: Set up github
+      - name: Setup for lockfile diff
         run: |
-          touch .gitattributes && echo "bun.lockb diff=lockb" > .gitattributes
+          git config core.attributesFile .gitattributes && echo "bun.lockb diff=lockb" >> .gitattributes
           git config diff.lockb.textconv bun
           git config diff.lockb.binary true
       - uses: oven-sh/setup-bun@v1
-      - name: check diff in bun lockfile
+      - name: Check diff in bun lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
