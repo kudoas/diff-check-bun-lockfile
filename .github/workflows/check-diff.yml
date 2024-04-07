@@ -1,0 +1,33 @@
+name: check diff in bun lockfile
+
+on:
+  push:
+    paths:
+      - "bun.lockb"
+
+jobs:
+  diff-check:
+    name: diff check bun lockfile
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: aquaproj/aqua-installer@v3.0.0
+        with:
+          aqua_version: v2.25.2
+      - name: Setup for lockfile diff
+        run: |
+          git config core.attributesFile .gitattributes && echo "bun.lockb diff=lockb" >> .gitattributes
+          git config diff.lockb.textconv bun
+          git config diff.lockb.binary true
+      - uses: oven-sh/setup-bun@v1
+      - name: Check diff in bun lockfile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          github-comment hide -k bun_diff
+          github-comment exec -k bun_diff -- git diff origin/main HEAD -- bun.lockb
