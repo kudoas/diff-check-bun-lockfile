@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "bun.lockb"
+    branches-ignore:
+      - main
 
 jobs:
   diff-check:
