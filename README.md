@@ -1,15 +1,1 @@
-# diff-check-bun-lockfile
-
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.0.35. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Link: [Bun のロックファイル(bun.lockb)のバージョン管理を Pull Request のコメントで可視化する](https://zenn.dev/da1chi/articles/1d39e61b1b28f4)
